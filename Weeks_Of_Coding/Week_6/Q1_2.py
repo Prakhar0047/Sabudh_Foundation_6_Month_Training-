@@ -7,7 +7,7 @@ class Node():
         self.data = data # This is link to the data
         self.next = None # This will act as next. At first it will be null because there is no other node
 
-
+# MAKING OF LINKED LIST
 class LinkedList():
     """
     Linked list class with full functionality like: append, prepend, printList, insert, delete
@@ -86,6 +86,7 @@ class LinkedList():
             current_node.next = new_node
             self.length+=1
 
+    # QUESTION 1
     def reverse(self):
         """
         A function for revesing Linked List
@@ -100,13 +101,50 @@ class LinkedList():
             current = next
         self.head = prev # After all end move eHead to end so it gets reversed.
 
-llist = LinkedList()
-llist.append(1)
-llist.append(2)
-llist.append(3)
-llist.append(4)
-print("Linked List")
-llist.print_list()
-llist.reverse()
-print("Linked List After Reversed")
-llist.print_list()
+# QUESTION 2 (Incomplete)
+def sorted_merger(Head_A,Head_B):
+    """
+    A function to merge 2 sorted list into One.
+    """
+    temp_linked = Node(0)
+    tail = temp_linked
+
+    while True:
+        if Head_A.data<=Head_B.data:
+            tail.next = Head_A
+            Head_A = Head_A.next
+        else:
+            tail.next = Head_A
+            Head_B = Head_B.next
+        tail = tail.next
+
+    return temp_linked.next
+
+# Driver Code for Q1
+# llist = LinkedList()
+# llist.append(1)
+# llist.append(2)
+# llist.append(3)
+# llist.append(4)
+# print("Linked List")
+# llist.print_list()
+# llist.reverse()
+# print("Linked List After Reversed")
+# llist.print_list()
+
+# Driver Code for Q2
+merge_list1 = LinkedList()
+merge_list2 = LinkedList()
+
+merge_list1.append(5)
+merge_list1.append(10)
+merge_list1.append(15)
+merge_list1.append(40)
+
+merge_list2.append(2)
+merge_list2.append(3)
+merge_list2.append(20)
+
+merge_list1.head = sorted_merger(merge_list1.head,merge_list2.head)
+print("Merged List is as Follows:")
+merge_list1.print_list()
